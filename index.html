@@ -7,20 +7,19 @@
     <meta name="description" content="Discover events your way. Swipe through curated local events and find your next experience.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Shrikhand&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #13131a;
-            --accent-coral: #ff6b5b;
-            --accent-coral-glow: rgba(255, 107, 91, 0.3);
-            --accent-purple: #a855f7;
-            --accent-blue: #3b82f6;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --border-subtle: rgba(255, 255, 255, 0.06);
-            --gradient-main: linear-gradient(135deg, #ff6b5b 0%, #a855f7 50%, #3b82f6 100%);
+            --primary: #4ECDC4;
+            --primary-dark: #3dbdb5;
+            --primary-glow: rgba(78, 205, 196, 0.3);
+            --danger: #FF6B6B;
+            --bg-light: #f5f5f5;
+            --bg-white: #ffffff;
+            --text-dark: #333333;
+            --text-medium: #666666;
+            --text-light: #999999;
+            --border-light: #eeeeee;
         }
 
         * {
@@ -35,42 +34,10 @@
 
         body {
             font-family: 'Outfit', -apple-system, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
+            background: var(--bg-light);
+            color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
-        }
-
-        /* Animated background */
-        .bg-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .bg-gradient::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(255, 107, 91, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
-                radial-gradient(ellipse at 60% 40%, rgba(59, 130, 246, 0.04) 0%, transparent 40%);
-            animation: bgFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes bgFloat {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(2%, 1%) rotate(1deg); }
-            66% { transform: translate(-1%, 2%) rotate(-1deg); }
         }
 
         /* Navigation */
@@ -81,9 +48,9 @@
             right: 0;
             z-index: 100;
             padding: 1rem 2rem;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-subtle);
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .nav-container {
@@ -95,13 +62,9 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
+            font-size: 1.75rem;
+            font-family: 'Shrikhand', cursive;
+            color: var(--primary);
         }
 
         .nav-links {
@@ -111,15 +74,15 @@
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--text-medium);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
             transition: color 0.2s ease;
         }
 
         .nav-links a:hover {
-            color: var(--text-primary);
+            color: var(--primary);
         }
 
         /* Main content wrapper */
@@ -136,6 +99,7 @@
             justify-content: center;
             padding: 8rem 2rem 4rem;
             text-align: center;
+            background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
         }
 
         .hero-content {
@@ -147,11 +111,11 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
-            background: rgba(255, 107, 91, 0.1);
-            border: 1px solid rgba(255, 107, 91, 0.2);
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
             border-radius: 100px;
             font-size: 0.85rem;
-            color: var(--accent-coral);
+            color: var(--primary-dark);
             margin-bottom: 2rem;
             animation: fadeInUp 0.6s ease-out;
         }
@@ -160,7 +124,7 @@
             content: '';
             width: 6px;
             height: 6px;
-            background: var(--accent-coral);
+            background: var(--primary);
             border-radius: 50%;
             animation: pulse 2s ease-in-out infinite;
         }
@@ -171,26 +135,24 @@
         }
 
         h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
             margin-bottom: 1.5rem;
+            color: var(--text-dark);
             animation: fadeInUp 0.6s ease-out 0.1s backwards;
         }
 
         h1 .gradient-text {
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary);
         }
 
         .hero-description {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            max-width: 600px;
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            margin-bottom: 2.5rem;
+            max-width: 550px;
             margin-left: auto;
             margin-right: auto;
             animation: fadeInUp 0.6s ease-out 0.2s backwards;
@@ -230,108 +192,149 @@
         }
 
         .btn-primary {
-            background: var(--gradient-main);
+            background: var(--primary);
             color: white;
-            box-shadow: 0 4px 20px var(--accent-coral-glow);
+            box-shadow: 0 4px 15px var(--primary-glow);
         }
 
         .btn-primary:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px var(--accent-coral-glow);
+            box-shadow: 0 6px 20px var(--primary-glow);
         }
 
         .btn-secondary {
-            background: var(--bg-card);
-            color: var(--text-primary);
-            border: 1px solid var(--border-subtle);
+            background: var(--bg-white);
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.1);
+            background: var(--bg-light);
+            border-color: #ddd;
         }
 
         /* Phone mockup */
         .phone-mockup {
-            margin-top: 4rem;
+            margin-top: 3rem;
             animation: fadeInUp 0.8s ease-out 0.4s backwards;
         }
 
         .phone-frame {
             width: 280px;
-            height: 580px;
-            background: var(--bg-card);
+            height: 560px;
+            background: var(--bg-white);
             border-radius: 40px;
             margin: 0 auto;
             padding: 12px;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border-light);
             box-shadow: 
-                0 50px 100px -20px rgba(0, 0, 0, 0.5),
-                0 30px 60px -10px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+                0 25px 50px -12px rgba(0, 0, 0, 0.15),
+                0 12px 24px -8px rgba(0, 0, 0, 0.1);
             position: relative;
         }
 
         .phone-screen {
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, #1a1a24 0%, #0f0f17 100%);
+            background: var(--bg-light);
             border-radius: 32px;
             overflow: hidden;
             position: relative;
         }
 
-        .phone-notch {
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 28px;
-            background: var(--bg-dark);
-            border-radius: 20px;
-            z-index: 10;
+        .phone-header {
+            background: var(--bg-white);
+            padding: 40px 16px 12px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .phone-logo {
+            font-family: 'Shrikhand', cursive;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .phone-filter {
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
         }
 
         .swipe-card {
             position: absolute;
-            top: 50px;
-            left: 16px;
-            right: 16px;
-            bottom: 100px;
-            background: linear-gradient(145deg, #ff6b5b 0%, #ff8a7a 100%);
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
+            top: 85px;
+            left: 12px;
+            right: 12px;
+            bottom: 80px;
+            background: var(--bg-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             animation: cardFloat 4s ease-in-out infinite;
         }
 
         @keyframes cardFloat {
-            0%, 100% { transform: rotate(-2deg); }
-            50% { transform: rotate(2deg); }
+            0%, 100% { transform: rotate(-1deg); }
+            50% { transform: rotate(1deg); }
+        }
+
+        .swipe-card-image {
+            height: 140px;
+            background: linear-gradient(135deg, var(--primary) 0%, #7dd3cf 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .swipe-card-content {
+            padding: 14px;
+        }
+
+        .swipe-card-category {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .swipe-card h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+            margin: 6px 0;
         }
 
         .swipe-card p {
             font-size: 0.75rem;
-            opacity: 0.9;
+            color: var(--text-medium);
+            margin-bottom: 4px;
+        }
+
+        .swipe-card-price {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-top: 8px;
         }
 
         .swipe-buttons {
             position: absolute;
-            bottom: 30px;
+            bottom: 20px;
             left: 0;
             right: 0;
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         .swipe-btn {
@@ -341,17 +344,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .swipe-btn.nope {
-            background: rgba(239, 68, 68, 0.2);
-            border: 2px solid #ef4444;
+            background: white;
+            color: var(--danger);
+            border: 2px solid var(--danger);
         }
 
         .swipe-btn.like {
-            background: rgba(34, 197, 94, 0.2);
-            border: 2px solid #22c55e;
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
 
         /* Features Section */
@@ -367,14 +374,15 @@
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
+            font-size: 2.25rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
+            color: var(--text-dark);
         }
 
         .section-header p {
-            color: var(--text-secondary);
+            color: var(--text-medium);
             font-size: 1.1rem;
             max-width: 500px;
             margin: 0 auto;
@@ -383,44 +391,46 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .feature-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 20px;
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
             padding: 2rem;
             transition: all 0.3s ease;
         }
 
         .feature-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(255, 107, 91, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            border-color: rgba(78, 205, 196, 0.3);
         }
 
         .feature-icon {
             width: 48px;
             height: 48px;
-            background: var(--gradient-main);
+            background: rgba(78, 205, 196, 0.1);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .feature-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
         }
 
         .feature-card p {
-            color: var(--text-secondary);
+            color: var(--text-medium);
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         /* Legal Pages */
@@ -436,41 +446,41 @@
         }
 
         .legal-page h1 {
-            font-size: 2.5rem;
+            font-size: 2.25rem;
             margin-bottom: 0.5rem;
             animation: none;
+            color: var(--text-dark);
         }
 
         .legal-page .last-updated {
-            color: var(--text-muted);
+            color: var(--text-light);
             font-size: 0.9rem;
             margin-bottom: 3rem;
-            font-family: 'Space Mono', monospace;
         }
 
         .legal-page h2 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            margin-top: 3rem;
+            margin-top: 2.5rem;
             margin-bottom: 1rem;
-            color: var(--text-primary);
+            color: var(--text-dark);
         }
 
         .legal-page h3 {
             font-size: 1.1rem;
             font-weight: 600;
-            margin-top: 2rem;
+            margin-top: 1.75rem;
             margin-bottom: 0.75rem;
-            color: var(--text-primary);
+            color: var(--text-dark);
         }
 
         .legal-page p {
-            color: var(--text-secondary);
+            color: var(--text-medium);
             margin-bottom: 1rem;
         }
 
         .legal-page ul {
-            color: var(--text-secondary);
+            color: var(--text-medium);
             margin-bottom: 1rem;
             padding-left: 1.5rem;
         }
@@ -480,7 +490,7 @@
         }
 
         .legal-page a {
-            color: var(--accent-coral);
+            color: var(--primary);
             text-decoration: none;
         }
 
@@ -492,7 +502,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--accent-coral);
+            color: var(--primary);
             text-decoration: none;
             font-weight: 500;
             margin-bottom: 2rem;
@@ -505,7 +515,8 @@
 
         /* Footer */
         footer {
-            border-top: 1px solid var(--border-subtle);
+            background: var(--bg-white);
+            border-top: 1px solid var(--border-light);
             padding: 3rem 2rem;
             margin-top: 4rem;
         }
@@ -521,12 +532,9 @@
         }
 
         .footer-logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 1.5rem;
+            font-family: 'Shrikhand', cursive;
+            color: var(--primary);
         }
 
         .footer-links {
@@ -536,18 +544,18 @@
         }
 
         .footer-links a {
-            color: var(--text-muted);
+            color: var(--text-light);
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.2s ease;
         }
 
         .footer-links a:hover {
-            color: var(--text-primary);
+            color: var(--primary);
         }
 
         .footer-copy {
-            color: var(--text-muted);
+            color: var(--text-light);
             font-size: 0.85rem;
             width: 100%;
             text-align: center;
@@ -559,7 +567,7 @@
             display: none;
             background: none;
             border: none;
-            color: var(--text-primary);
+            color: var(--text-dark);
             font-size: 1.5rem;
             cursor: pointer;
         }
@@ -578,16 +586,24 @@
             }
 
             h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .hero-description {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
 
             .phone-frame {
                 width: 240px;
-                height: 500px;
+                height: 480px;
+            }
+
+            .swipe-card {
+                bottom: 70px;
+            }
+
+            .swipe-card-image {
+                height: 110px;
             }
 
             .footer-content {
@@ -603,8 +619,6 @@
     </style>
 </head>
 <body>
-    <div class="bg-gradient"></div>
-
     <nav>
         <div class="nav-container">
             <div class="logo">EventSwipe</div>
@@ -637,10 +651,19 @@
                     <div class="phone-mockup">
                         <div class="phone-frame">
                             <div class="phone-screen">
-                                <div class="phone-notch"></div>
+                                <div class="phone-header">
+                                    <div class="phone-logo">EventSwipe</div>
+                                    <div class="phone-filter">Filters</div>
+                                </div>
                                 <div class="swipe-card">
-                                    <h3>Summer Music Festival</h3>
-                                    <p>📍 Downtown • Tonight at 8PM</p>
+                                    <div class="swipe-card-image">🎵</div>
+                                    <div class="swipe-card-content">
+                                        <div class="swipe-card-category">Music</div>
+                                        <h3>Summer Music Festival</h3>
+                                        <p>Sat, Jan 15 • 8:00 PM</p>
+                                        <p>Downtown Arena</p>
+                                        <span class="swipe-card-price">From $45</span>
+                                    </div>
                                 </div>
                                 <div class="swipe-buttons">
                                     <div class="swipe-btn nope">✕</div>
@@ -768,7 +791,7 @@
 
             <h2>9. Contact Us</h2>
             <p>If you have questions about this Privacy Policy or our practices, please contact us at:</p>
-            <p><a href="mailto:privacy@eventswipe.app">privacy@eventswipe.app</a></p>
+            <p><a href="mailto:privacy@eventswipeapp.com">privacy@eventswipeapp.com</a></p>
         </div>
 
         <!-- Terms of Use Page -->
@@ -856,7 +879,7 @@
 
             <h2>14. Contact Information</h2>
             <p>For questions about these Terms, please contact us at:</p>
-            <p><a href="mailto:legal@eventswipe.app">legal@eventswipe.app</a></p>
+            <p><a href="mailto:legal@eventswipeapp.com">legal@eventswipeapp.com</a></p>
         </div>
     </main>
 
@@ -866,7 +889,7 @@
             <ul class="footer-links">
                 <li><a href="#" onclick="showPage('privacy')">Privacy Policy</a></li>
                 <li><a href="#" onclick="showPage('terms')">Terms of Use</a></li>
-                <li><a href="mailto:hello@eventswipe.app">Contact</a></li>
+                <li><a href="mailto:hello@eventswipeapp.com">Contact</a></li>
             </ul>
             <p class="footer-copy">© 2026 EventSwipe. All rights reserved.</p>
         </div>
@@ -894,15 +917,20 @@
 
         function toggleMobileMenu() {
             const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.right = '0';
-            navLinks.style.background = 'rgba(10, 10, 15, 0.95)';
-            navLinks.style.padding = '1rem 2rem';
-            navLinks.style.borderBottom = '1px solid var(--border-subtle)';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '1rem 2rem';
+                navLinks.style.borderBottom = '1px solid #eee';
+                navLinks.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+            }
         }
 
         // Handle hash navigation
