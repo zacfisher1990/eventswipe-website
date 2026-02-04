@@ -997,9 +997,9 @@
         <div class="footer-content">
             <div class="footer-logo">EventSwipe</div>
             <ul class="footer-links">
-                <li><a href="#" onclick="showPage('privacy')">Privacy Policy</a></li>
-                <li><a href="#" onclick="showPage('terms')">Terms of Use</a></li>
-                <li><a href="/cdn-cgi/l/email-protection#9df5f8f1f1f2ddf8ebf8f3e9eeeaf4edf8fcededb3fef2f0">Contact</a></li>
+                <li><a href="#privacy" onclick="showPage('privacy'); return false;">Privacy Policy</a></li>
+                <li><a href="#terms" onclick="showPage('terms'); return false;">Terms of Use</a></li>
+                <li><a href="mailto:support@eventswipeapp.com">Contact</a></li>
             </ul>
             
             <!-- Language Selector for Legal Pages -->
@@ -1082,3 +1082,15 @@
         });
 
         // Handle hash navigation
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash;
+            if (hash === '#privacy') showPage('privacy');
+            else if (hash === '#terms') showPage('terms');
+        });
+
+        // Check initial hash
+        if (window.location.hash === '#privacy') showPage('privacy');
+        else if (window.location.hash === '#terms') showPage('terms');
+    </script>
+</body>
+</html>
