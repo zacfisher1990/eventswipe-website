@@ -562,6 +562,116 @@
             margin-top: 1rem;
         }
 
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            color: var(--text-medium);
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .language-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .language-btn svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .language-selector.open .language-btn svg {
+            transform: rotate(180deg);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 0.5rem;
+            min-width: 200px;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 100;
+        }
+
+        .language-selector.open .language-dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .language-dropdown-header {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .lang-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.6rem 0.75rem;
+            color: var(--text-medium);
+            font-size: 0.85rem;
+            border-radius: 4px;
+            transition: all 0.15s ease;
+        }
+
+        .lang-row:hover {
+            background: rgba(78, 205, 196, 0.05);
+        }
+
+        .language-dropdown .lang-flag {
+            font-size: 1.1rem;
+        }
+
+        .language-dropdown .lang-links {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+
+        .language-dropdown .lang-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.2rem 0.5rem;
+            background: var(--bg-light);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            transition: all 0.15s ease;
+        }
+
+        .language-dropdown .lang-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
         /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
@@ -791,7 +901,7 @@
 
             <h2>9. Contact Us</h2>
             <p>If you have questions about this Privacy Policy or our practices, please contact us at:</p>
-            <p><a href="mailto:support@proxtrades.com">support@proxtrades.com</a></p>
+            <p><a href="/cdn-cgi/l/email-protection#0d7e787d7d627f794d7d7f6275797f6c69687e236e6260"><span class="__cf_email__" data-cfemail="93e0e6e3e3fce1e7d3e3e1fcebe7e1f2f7f6e0bdf0fcfe">[email&#160;protected]</span></a></p>
         </div>
 
         <!-- Terms of Use Page -->
@@ -879,7 +989,7 @@
 
             <h2>14. Contact Information</h2>
             <p>For questions about these Terms, please contact us at:</p>
-            <p><a href="mailto:support@proxtrades.com">support@proxtrades.com</a></p>
+            <p><a href="/cdn-cgi/l/email-protection#bbc8cecbcbd4c9cffbcbc9d4c3cfc9dadfdec895d8d4d6"><span class="__cf_email__" data-cfemail="d4a7a1a4a4bba6a094a4a6bbaca0a6b5b0b1a7fab7bbb9">[email&#160;protected]</span></a></p>
         </div>
     </main>
 
@@ -889,13 +999,38 @@
             <ul class="footer-links">
                 <li><a href="#" onclick="showPage('privacy')">Privacy Policy</a></li>
                 <li><a href="#" onclick="showPage('terms')">Terms of Use</a></li>
-                <li><a href="mailto:hello@eventswipeapp.com">Contact</a></li>
+                <li><a href="/cdn-cgi/l/email-protection#9df5f8f1f1f2ddf8ebf8f3e9eeeaf4edf8fcededb3fef2f0">Contact</a></li>
             </ul>
+            
+            <!-- Language Selector for Legal Pages -->
+            <div class="language-selector" id="langSelector">
+                <button class="language-btn" onclick="toggleLangDropdown()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                    </svg>
+                    Legal in Other Languages
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                    </svg>
+                </button>
+                <div class="language-dropdown">
+                    <div class="language-dropdown-header">Select Language</div>
+                    <div class="lang-row"><span class="lang-flag">🇩🇪</span> Deutsch <span class="lang-links"><a href="legal/privacy-de.html">Privacy</a><a href="legal/terms-de.html">Terms</a></span></div>
+                    <div class="lang-row"><span class="lang-flag">🇪🇸</span> Español <span class="lang-links"><a href="legal/privacy-es.html">Privacy</a><a href="legal/terms-es.html">Terms</a></span></div>
+                    <div class="lang-row"><span class="lang-flag">🇫🇷</span> Français <span class="lang-links"><a href="legal/privacy-fr.html">Privacy</a><a href="legal/terms-fr.html">Terms</a></span></div>
+                    <div class="lang-row"><span class="lang-flag">🇮🇩</span> Indonesia <span class="lang-links"><a href="legal/privacy-id.html">Privacy</a><a href="legal/terms-id.html">Terms</a></span></div>
+                    <div class="lang-row"><span class="lang-flag">🇧🇷</span> Português <span class="lang-links"><a href="legal/privacy-pt.html">Privacy</a><a href="legal/terms-pt.html">Terms</a></span></div>
+                    <div class="lang-row"><span class="lang-flag">🇷🇺</span> Русский <span class="lang-links"><a href="legal/privacy-ru.html">Privacy</a><a href="legal/terms-ru.html">Terms</a></span></div>
+                    <div class="lang-row"><span class="lang-flag">🇹🇷</span> Türkçe <span class="lang-links"><a href="legal/privacy-tr.html">Privacy</a><a href="legal/terms-tr.html">Terms</a></span></div>
+                    <div class="lang-row"><span class="lang-flag">🇺🇦</span> Українська <span class="lang-links"><a href="legal/privacy-uk.html">Privacy</a><a href="legal/terms-uk.html">Terms</a></span></div>
+                </div>
+            </div>
+            
             <p class="footer-copy">© 2026 EventSwipe. All rights reserved.</p>
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function showPage(page) {
             // Hide all pages
             document.getElementById('home-page').style.display = 'none';
@@ -933,16 +1068,17 @@
             }
         }
 
-        // Handle hash navigation
-        window.addEventListener('hashchange', function() {
-            const hash = window.location.hash;
-            if (hash === '#privacy') showPage('privacy');
-            else if (hash === '#terms') showPage('terms');
+        function toggleLangDropdown() {
+            const selector = document.getElementById('langSelector');
+            selector.classList.toggle('open');
+        }
+
+        // Close language dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const selector = document.getElementById('langSelector');
+            if (selector && !selector.contains(e.target)) {
+                selector.classList.remove('open');
+            }
         });
 
-        // Check initial hash
-        if (window.location.hash === '#privacy') showPage('privacy');
-        else if (window.location.hash === '#terms') showPage('terms');
-    </script>
-</body>
-</html>
+        // Handle hash navigation
